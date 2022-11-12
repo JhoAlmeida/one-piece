@@ -35,20 +35,20 @@ def morreu():
 
 def jogar():
     jogando = True
-    luffyX = 500
-    luffyY = 400
+    luffyX = 50
+    luffyY = 30
     movimentoLuffyX = 0
-    larguraLuffy = 120
-    alturaLuffy = 110
-    alturaFogo = 250
-    larguraFogo = 50
-    posicaoFogoX = 400
-    posicaoFogoY = -240
+    larguraLuffy = 30
+    alturaLuffy = 50
+    alturaFogo = 50
+    larguraFogo = 25
+    posicaoFogoX = 170
+    posicaoFogoY = -550
     velocidadeFogo = 1
     pontos = 0
     pygame.mixer.music.load("one-piece/tema.mp3")
     pygame.mixer.music.play(-1)
-    pygame.mixer.music.set_volume(-1)
+    pygame.mixer.music.set_volume(-0.7)
 
     fogoSound = pygame.mixer.Sound("one-piece/bola-fogo-sound.mp3")
     fogoSound.set_volume(1)
@@ -73,9 +73,9 @@ def jogar():
             
         if jogando:
             if posicaoFogoY > altura:
-                posicaoFogoY = -240
+                posicaoFogoY = -550
                 posicaoFogoX = random.randint(0,largura)
-                #velocidadeMissile = velocidadeMissile + 1
+                velocidadeFogo = velocidadeFogo + 1
                 pontos = pontos + 1
                 pygame.mixer.Sound.play(fogoSound)
             else:
