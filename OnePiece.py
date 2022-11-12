@@ -13,7 +13,7 @@ gameEvents = pygame.event
 branco = (255,255,255)
 fundo = pygame.image.load("one-piece/wano.png")
 luffy = pygame.image.load("one-piece/luffy-wano.png")
-missile = pygame.image.load("assets/missile.png")
+fogo = pygame.image.load("assets/missile.png")
 
 
 
@@ -40,18 +40,18 @@ def jogar():
     movimentoLuffyX = 0
     larguraLuffy = 120
     alturaLuffy = 110
-    alturaMissile = 250
-    larguraMissile = 50
-    posicaoMissileX = 400
-    posicaoMissileY = -240
-    velocidadeMissile = 1
+    alturaFogo = 250
+    larguraFogo = 50
+    posicaoFogoX = 400
+    posicaoFogoY = -240
+    velocidadeFogo = 1
     pontos = 0
     pygame.mixer.music.load("one-piece/tema.mp3")
     pygame.mixer.music.play(-1)
     pygame.mixer.music.set_volume(-1)
 
-    missileSound = pygame.mixer.Sound("assets/missile.wav")
-    missileSound.set_volume(1)
+    fogoSound = pygame.mixer.Sound("one-piece/bola-fogo-sound.mp3")
+    fogoSound.set_volume(1)
     pygame.mixer.Sound.play(missileSound)
 
     explosaoSound = pygame.mixer.Sound("assets/explosao.wav")
@@ -72,14 +72,14 @@ def jogar():
                 movimentoLuffyX = 0
             
         if jogando:
-            if posicaoMissileY > altura:
-                posicaoMissileY = -240
-                posicaoMissileX = random.randint(0,largura)
+            if posicaoFogoY > altura:
+                posicaoFogoY = -240
+                posicaoFogoX = random.randint(0,largura)
                 #velocidadeMissile = velocidadeMissile + 1
                 pontos = pontos + 1
-                pygame.mixer.Sound.play(missileSound)
+                pygame.mixer.Sound.play(fogoSound)
             else:
-                posicaoMissileY =posicaoMissileY + velocidadeMissile
+                posicaoFogoY =posicaoFogoY + velocidadeFogo
 
             if luffyX + movimentoLuffyX >0 and luffyX + movimentoLuffyX< largura-larguraLuffy:
                 luffyX = luffyX + movimentoLuffyX
@@ -87,18 +87,18 @@ def jogar():
             gameDisplay.blit(fundo,(0,0))
             gameDisplay.blit(luffy, (luffyX,luffyY))
             
-            gameDisplay.blit(missile, (posicaoMissileX,posicaoMissileY))
+            gameDisplay.blit(fogo, (posicaoFogoX,posicaoFogoY))
             escreverTexto("Pontos: "+str(pontos))
 
             pixelsXLuffy = list(range(luffyX, luffyX+larguraLuffy))
             pixelsYLuffy = list(range(luffyY, luffyY+alturaLuffy))
 
-            pixelXMissile = list(range(posicaoMissileX, posicaoMissileX+larguraMissile))
-            pixelYMissile = list(range(posicaoMissileY, posicaoMissileY+alturaMissile))
+            pixelXFogo = list(range(posicaoFogoX, posicaoFogoX+larguraFogo))
+            pixelYFogo = list(range(posicaoFogoY, posicaoFogoY+alturaFogo))
 
-            colisaoY = len(list(set(pixelYMissile) & set(pixelsYLuffy) ))
+            colisaoY = len(list(set(pixelYFogo) & set(pixelsYLuffy) ))
             if colisaoY > 0:
-                colisaoX = len(list(set(pixelXMissile) & set(pixelsXLuffy) ))
+                colisaoX = len(list(set(pixelXFogo) & set(pixelsXLuffy) ))
                 print(colisaoX)
                 if colisaoX > 45:
                     morreu()
