@@ -3,7 +3,7 @@ import random
 import time
 pygame.init()
 pygameDisplay = pygame.display
-pygameDisplay.set_caption("Iron Man do Marcão")
+pygameDisplay.set_caption("One Piece")
 altura = 913
 largura = 733
 tamanho = (largura, altura)
@@ -13,7 +13,7 @@ gameEvents = pygame.event
 branco = (255,255,255)
 fundo = pygame.image.load("one-piece/wano.png")
 luffy = pygame.image.load("one-piece/luffy-wano.png")
-fogo = pygame.image.load("assets/missile.png")
+fogo = pygame.image.load("one-piece/fogo.png")
 
 
 
@@ -52,9 +52,9 @@ def jogar():
 
     fogoSound = pygame.mixer.Sound("one-piece/bola-fogo-sound.mp3")
     fogoSound.set_volume(1)
-    pygame.mixer.Sound.play(missileSound)
+    pygame.mixer.Sound.play(fogoSound)
 
-    explosaoSound = pygame.mixer.Sound("assets/explosao.wav")
+    explosaoSound = pygame.mixer.Sound("one-piece/aimamae.mp3")
     explosaoSound.set_volume(1)
     while True:
         for event in gameEvents.get():
