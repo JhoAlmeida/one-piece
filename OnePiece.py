@@ -12,7 +12,7 @@ clock = pygame.time.Clock()
 gameEvents = pygame.event
 branco = (255,255,255)
 fundo = pygame.image.load("one-piece/wano.png")
-iron = pygame.image.load("one-piece/luffy-wano.png")
+luffy = pygame.image.load("one-piece/luffy-wano.png")
 missile = pygame.image.load("assets/missile.png")
 
 
@@ -35,11 +35,11 @@ def morreu():
 
 def jogar():
     jogando = True
-    ironX = 500
-    ironY = 400
-    movimentoIronX = 0
-    larguraIron = 120
-    alturaIron = 110
+    luffyX = 500
+    luffyY = 400
+    movimentoLuffyX = 0
+    larguraLuffy = 120
+    alturaLuffy = 110
     alturaMissile = 250
     larguraMissile = 50
     posicaoMissileX = 400
@@ -63,13 +63,13 @@ def jogar():
                 quit()
             elif event.type == pygame.KEYDOWN:
                 if event.key == pygame.K_LEFT:
-                    movimentoIronX = -15
+                    movimentoLuffyX = -15
                 elif event.key == pygame.K_RIGHT:
-                    movimentoIronX = 15
+                    movimentoLuffyX = 15
                 elif event.key == pygame.K_RETURN:
                     jogar()
             elif event.type == pygame.KEYUP:
-                movimentoIronX = 0
+                movimentoLuffyX = 0
             
         if jogando:
             if posicaoMissileY > altura:
@@ -81,24 +81,24 @@ def jogar():
             else:
                 posicaoMissileY =posicaoMissileY + velocidadeMissile
 
-            if ironX + movimentoIronX >0 and ironX + movimentoIronX< largura-larguraIron:
-                ironX = ironX + movimentoIronX
+            if luffyX + movimentoLuffyX >0 and luffyX + movimentoLuffyX< largura-larguraLuffy:
+                luffyX = luffyX + movimentoLuffyX
             gameDisplay.fill(branco)
             gameDisplay.blit(fundo,(0,0))
-            gameDisplay.blit(iron, (ironX,ironY))
+            gameDisplay.blit(luffy, (luffyX,luffyY))
             
             gameDisplay.blit(missile, (posicaoMissileX,posicaoMissileY))
             escreverTexto("Pontos: "+str(pontos))
 
-            pixelsXIron = list(range(ironX, ironX+larguraIron))
-            pixelsYIron = list(range(ironY, ironY+alturaIron))
+            pixelsXLuffy = list(range(luffyX, luffyX+larguraLuffy))
+            pixelsYLuffy = list(range(luffyY, luffyY+alturaLuffy))
 
             pixelXMissile = list(range(posicaoMissileX, posicaoMissileX+larguraMissile))
             pixelYMissile = list(range(posicaoMissileY, posicaoMissileY+alturaMissile))
 
-            colisaoY = len(list(set(pixelYMissile) & set(pixelsYIron) ))
+            colisaoY = len(list(set(pixelYMissile) & set(pixelsYLuffy) ))
             if colisaoY > 0:
-                colisaoX = len(list(set(pixelXMissile) & set(pixelsXIron) ))
+                colisaoX = len(list(set(pixelXMissile) & set(pixelsXLuffy) ))
                 print(colisaoX)
                 if colisaoX > 45:
                     morreu()
