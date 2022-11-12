@@ -12,7 +12,7 @@ clock = pygame.time.Clock()
 gameEvents = pygame.event
 branco = (255,255,255)
 fundo = pygame.image.load("one-piece/wano.png")
-iron = pygame.image.load("assets/ironLarge.png")
+iron = pygame.image.load("one-piece/luffy-wano.png")
 missile = pygame.image.load("assets/missile.png")
 
 
