@@ -46,7 +46,7 @@ def jogar():
     posicaoMissileY = -240
     velocidadeMissile = 1
     pontos = 0
-    pygame.mixer.music.load("assets/ironSound.mp3")
+    pygame.mixer.music.load("one-piece/tema.mp3")
     pygame.mixer.music.play(-1)
     pygame.mixer.music.set_volume(-1)
 
