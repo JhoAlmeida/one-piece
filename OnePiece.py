@@ -11,44 +11,45 @@ gameDisplay = pygame.display.set_mode(tamanho)
 clock = pygame.time.Clock()
 gameEvents = pygame.event
 branco = (255,255,255)
-fundo = pygame.image.load("one-piece/wano.png")
-luffy = pygame.image.load("one-piece/luffy-wano.png")
+fundo = pygame.image.load("one-piece/wano.jpg")
+luffy = pygame.image.load("one-piece/luffy.png")
 fogo = pygame.image.load("one-piece/fogo.png")
-
+preto = (000,000,000)
+atitus = pygame.image.load("one-piece/atitus.png")
 
 
 
 def escreverTexto (texto):
-    fonte  = pygame.font.Font("freesansbold.ttf",15)
-    textoDisplay = fonte.render(texto,True,branco)
-    gameDisplay.blit(textoDisplay, (880,80))
+    fonte  = pygame.font.Font("freesansbold.ttf",20)
+    textoDisplay = fonte.render(texto,True,preto)
+    gameDisplay.blit(textoDisplay, (85,100))
     pygameDisplay.update()
 
 def morreu():
     fonte  = pygame.font.Font("freesansbold.ttf",95)
     fonte2  = pygame.font.Font("freesansbold.ttf",45)
-    textoDisplay = fonte.render("MORREUU !!!!",True,branco)
-    textoDisplay2 = fonte2.render("press enter to continue !!!!",True,branco)
+    textoDisplay = fonte.render("MORREUU !!!!",True,preto)
+    textoDisplay2 = fonte2.render("press enter to continue !!!!",True,preto)
     gameDisplay.blit(textoDisplay, (150,150))
     gameDisplay.blit(textoDisplay2, (150,350))
     pygameDisplay.update()
 
 def jogar():
     jogando = True
-    luffyX = 50
-    luffyY = 30
+    luffyX = 200
+    luffyY = 550
     movimentoLuffyX = 0
-    larguraLuffy = 30
-    alturaLuffy = 50
+    larguraLuffy = 300
+    alturaLuffy = 396
     alturaFogo = 50
     larguraFogo = 25
     posicaoFogoX = 170
-    posicaoFogoY = -550
+    posicaoFogoY = -200
     velocidadeFogo = 1
     pontos = 0
     pygame.mixer.music.load("one-piece/tema.mp3")
     pygame.mixer.music.play(-1)
-    pygame.mixer.music.set_volume(-0.7)
+    pygame.mixer.music.set_volume(-1)
 
     fogoSound = pygame.mixer.Sound("one-piece/bola-fogo-sound.mp3")
     fogoSound.set_volume(1)
