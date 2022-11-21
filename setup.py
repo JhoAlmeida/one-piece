@@ -2,7 +2,7 @@ import cx_Freeze
 
 executables = [cx_Freeze.Executable(
     script="onePiece.py",
-    icon="one-piece/icon.png"
+    icon="one-piece/icon.ico"
 )]
 cx_Freeze.setup(
     name="OnePiece",
