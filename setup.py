@@ -1,14 +1,14 @@
 import cx_Freeze
 
 executables = [cx_Freeze.Executable(
-    script="OnePiece.py",
-    icon="assets/icon.png"
+    script="onePiece.py",
+    icon="one-piece/icon.png"
 )]
 cx_Freeze.setup(
     name="OnePiece",
     options={
         "build_exe":{"packages":["pygame"],
-        "include_files":["assets"]
+        "include_files":["one-piece"]
         }}
     ,executables = executables
 )

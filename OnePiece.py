@@ -16,6 +16,16 @@ luffy = pygame.image.load("one-piece/luffy.png")
 fogo = pygame.image.load("one-piece/fogo.png")
 preto = (000,000,000)
 atitus = pygame.image.load("one-piece/atitus.png")
+gameIcon = pygame.image.load('one-piece/icon.png')
+pygame.display.set_icon(gameIcon)
+pygame.display.set_caption('One Piece - Jhonatan')
+
+login_nome = input ("Nome: ")
+login_email = input ("Email: ")
+login = login_nome + login_email
+with open ("login.txt ","w") as arquivo:
+    for nome in login:
+        arquivo.write (str(nome))
 
 
 
@@ -29,9 +39,9 @@ def morreu():
     fonte  = pygame.font.Font("freesansbold.ttf",95)
     fonte2  = pygame.font.Font("freesansbold.ttf",45)
     textoDisplay = fonte.render("MORREUU !!!!",True,preto)
-    textoDisplay2 = fonte2.render("press enter to continue !!!!",True,preto)
-    gameDisplay.blit(textoDisplay, (150,150))
-    gameDisplay.blit(textoDisplay2, (150,350))
+    textoDisplay2 = fonte2.render("press enter to continue !!!",True,preto)
+    gameDisplay.blit(textoDisplay, (70,340))
+    gameDisplay.blit(textoDisplay2, (100,450))
     pygameDisplay.update()
 
 def jogar():
@@ -90,6 +100,12 @@ def jogar():
             
             gameDisplay.blit(fogo, (posicaoFogoX,posicaoFogoY))
             escreverTexto("Pontos: "+str(pontos))
+           
+            if luffyY < posicaoFogoY + larguraFogo:
+                
+                if luffyX < posicaoFogoX and luffyX+larguraLuffy > posicaoFogoX or posicaoFogoX+larguraFogo > luffyX and posicaoFogoX+larguraFogo < luffyX+larguraLuffy :
+                    morreu()
+                
 
             pixelsXLuffy = list(range(luffyX, luffyX+larguraLuffy))
             pixelsYLuffy = list(range(luffyY, luffyY+alturaLuffy))
